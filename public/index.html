@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Socket Server</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+
+<body>
+    <script src="socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        socket.on('connect', function () {
+            console.log('Conectado al servidor');
+        });
+        socket.on('disconnect', function () {
+            console.log('bai bai conexión con servidor');
+        });
+        socket.on('new-message', function (payload) {
+            console.log('Escuchando: ', payload);
+        });
+        socket.on('active-bands', function (bands) {
+            console.clear();
+            console.table(bands);
+        });
+    </script>
+    <p>Welcome to 403:</p>
+    <h1>Forbidden resource</h1>
+    <p>The server understood the request but refuses to authorize it.</p>
+</body>
+
+</html>
